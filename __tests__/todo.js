@@ -11,6 +11,13 @@ describe("Todolist Test Suite", ()=>{
                 dueDate: new Date(). toLocaleDateString("en-CA")
             }
         );
+        add(
+            {
+                title:"Test todo 2",
+                completed: false,
+                dueDate: new Date(). toLocaleDateString("en-CA")
+            }
+        );
     })
     test("Should add new todo",()=>{
         const beforelen = all.length
