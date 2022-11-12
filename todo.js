@@ -11,7 +11,7 @@ const todoList = () => {
           var i;
         var lst = [];
         for (i in all) {
-          if (all[i].dueDate < today) {
+          if (all[i].dueDate < new Date(). toLocaleDateString("en-CA")) {
             lst.push(all[i]);
           }
         }
@@ -21,7 +21,7 @@ const todoList = () => {
     const dueToday = () => {
          var lst = [];
         for (i in all) {
-          if (all[i].dueDate === today) {
+          if (all[i].dueDate === new Date(). toLocaleDateString("en-CA")) {
             lst.push(all[i]);
           }
         }
@@ -32,7 +32,7 @@ const todoList = () => {
          var i;
         var lst = [];
         for (i in all) {
-          if (all[i].dueDate > today) {
+          if (all[i].dueDate > new Date(). toLocaleDateString("en-CA")) {
             lst.push(all[i]);
           }
         }
@@ -44,7 +44,7 @@ const todoList = () => {
         var display_Lst = []
         for (i=0;i<list.length;i++) {
           if (list[i].completed === false) {
-            if (list[i].dueDate===today) {
+            if (list[i].dueDate===new Date(). toLocaleDateString("en-CA")) {
               display_Lst.push(`[ ] ${list[i].title}`)
             }
             else {
@@ -52,7 +52,7 @@ const todoList = () => {
             }
           }
           else {
-            if (list[i].dueDate===today) {
+            if (list[i].dueDate===new Date(). toLocaleDateString("en-CA")) {
               display_Lst.push(`[x] ${list[i].title}`)
             }
             else {
