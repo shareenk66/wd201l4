@@ -39,13 +39,18 @@ describe("Todolist Test Suite", () => {
     markAsComplete(0);
     expect(all[0].completed).toBe(true);
   });
+
   test("should retrieve overdue items", () => {
-    expect(overdue().length).toBe(1);
+    for (let i=0;i<overdue.length;i++){
+      expect(overdue[i].dueDate<new Date().toLocaleDateString("en-CA")).toBe(true)
+    }
   });
   test("should retrieve due later items", () => {
-    expect(dueLater().length).toBe(1);
-  });
+    for (let i=0;i<overdue.length;i++){
+      expect(overdue[i].dueDate===new Date().toLocaleDateString("en-CA")).toBe(true)
+    }  });
   test("should retrieve due today items", () => {
-    expect(dueToday().length).toBe(3);
-  });
+    for (let i=0;i<overdue.length;i++){
+      expect(overdue[i].dueDate>new Date().toLocaleDateString("en-CA")).toBe(true)
+    }  });
 });

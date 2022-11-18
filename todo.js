@@ -1,70 +1,40 @@
 const todoList = () => {
-    all = []
-    const add = (todoItem) => {
-      all.push(todoItem)
-    }
-    const markAsComplete = (index) => {
-      all[index].completed = true
-    }
-  
-    const overdue = () => {
-          var i;
-        var lst = [];
-        for (i in all) {
-          if (all[i].dueDate < new Date(). toLocaleDateString("en-CA")) {
-            lst.push(all[i]);
-          }
-        }
-        return lst;
-    }
-  
-    const dueToday = () => {
-         var lst = [];
-        for (i in all) {
-          if (all[i].dueDate === new Date(). toLocaleDateString("en-CA")) {
-            lst.push(all[i]);
-          }
-        }
-        return lst;
-    }
-  
-    const dueLater = () => {
-         var i;
-        var lst = [];
-        for (i in all) {
-          if (all[i].dueDate > new Date(). toLocaleDateString("en-CA")) {
-            lst.push(all[i]);
-          }
-        }
-        return lst;
-    }
-  
-    const toDisplayableList = (list) => {
-          var i;
-        var display_Lst = []
-        for (i=0;i<list.length;i++) {
-          if (list[i].completed === false) {
-            if (list[i].dueDate===new Date(). toLocaleDateString("en-CA")) {
-              display_Lst.push(`[ ] ${list[i].title}`)
-            }
-            else {
-              display_Lst.push(`[ ] ${list[i].title} ${list[i].dueDate}`)
-            }
-          }
-          else {
-            if (list[i].dueDate===new Date(). toLocaleDateString("en-CA")) {
-              display_Lst.push(`[x] ${list[i].title}`)
-            }
-            else {
-              display_Lst.push(`[x] ${list[i].title} ${list[i].dueDate}`)
-            }          
-          }
-        }
-        
-        return display_Lst.join("\n");
-      }
-  
-    return { all, add, markAsComplete, overdue, dueToday, dueLater, toDisplayableList };
+  all = []
+  const add = (todoItem) => {
+    all.push(todoItem)
   }
-  
-  module.exports=todoList;
+  const markAsComplete = (index) => {
+    all[index].completed = true
+  }
+
+  const overdue = () => {
+    // Write the date check condition here and return the array of overdue items accordingly.
+ 
+  return all.filter((item) => item.dueDate < new Date().toLocaleDateString("en-CA"));
+  }
+
+  const dueToday = () => {
+      return all.filter((item) => item.dueDate === new Date().toLocaleDateString("en-CA"));
+
+  }
+
+  const dueLater = () => {
+      return all.filter((item) => item.dueDate > new Date().toLocaleDateString("en-CA"));
+
+  }
+
+  const toDisplayableList = (list) => {
+    // Format the To-Do list her
+    return list.map(item => `${item.completed ? '[x]' : '[ ]'} ${item.title} ${item.dueDate === new Date().toLocaleDateString("en-CA") ? '' : item.dueDate}`).join("\n")
+    
+    
+  }
+
+  return { all, add, markAsComplete, overdue, dueToday, dueLater, toDisplayableList };
+}
+
+// ####################################### #
+// DO NOT CHANGE ANYTHING BELOW THIS LINE. #
+// ####################################### #
+
+module.exports = todoList;
